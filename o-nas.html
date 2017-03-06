@@ -1,0 +1,174 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>LaGrace</title>
+
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link href='https://fonts.googleapis.com/css?family=Lato:300italic,700,400,300&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        
+        <!-- css -->
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link href="fonts/stylesheet.css" rel="stylesheet">
+        <!-- js -->
+        <script src="js/jquery.js"></script>
+        <script src=js/main.js></script>
+        <script src=js/jquery.smoothscroll.js></script>
+        <!--Skrollr-->
+		<script type="text/javascript" src="js/skrollr.js"></script>
+        <!--Bootstrap-->
+        <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+        <script src="bootstrap/js/bootstrap.min.js"></script>   
+        <!--BXSlider-->
+        <link href="bxslider/jquery.bxslider.css" rel="stylesheet" />
+        <script src="bxslider/jquery.bxslider.js"></script>
+        <!--colorbox-->
+		<link rel="stylesheet" type="text/css" href="colorbox/colorbox.css">
+		<script src="colorbox/jquery.colorbox.js"></script>
+        
+        <!--------------------->
+		<script type="text/javascript">
+            jQuery(window).load(function(){ 
+                skrollr.init({ forceHeight: false }); 
+            });
+        </script>
+
+    </head>
+    <body>
+        <main>
+            <header id="top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-10 col-sm-3 logo-div2">
+                            <a href="/" title="LaGrace"><img alt="Logo" src="images/logo.png" class="logo img-responsive"></a>
+                        </div> 
+                        <div class="col-sm-9 hidden-xs">
+                            <ul id="menu-top">
+                                <li class="active"><a href="#" title="">Strona główna</a></li>
+                                <li><a href="#" title="">O nas</a></li>
+                                <li><a href="#" title="">Zabiegi</a>
+                                    <ul class="menu-top-2 transition_0_5">
+                                        <li><a href="#" title="">Zabieg 1</a></li>
+                                        <li><a href="#" title="">Zabieg 2</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#" title="">Lookbook</a></li>
+                                <li><a href="#" title="">Kontakt</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
+                            <ul id="menu-top-mobile">
+                                <li><a href="#" title="">Strona główna</a></li>
+                                <li><a href="#" title="">O nas</a></li>
+                                <li class="has-child"><a href="#" title="">Zabiegi<img class="next-level-mobile" src="images/down-arrow.png" alt="V"></a>
+                                    <ul class="menu-top-2 ">
+                                        <li><a href="#" title="">Zabieg 1</a></li>
+                                        <li><a href="#" title="">Zabieg 2</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#" title="">Lookbook</a></li>
+                                <li><a href="#" title="">Kontakt</a></li>
+                            </ul>
+                            
+                        </div>
+                        <img class="menu-top-mobile-ico hidden-sm hidden-md hidden-lg" src="images/menu.png">
+                    </div>
+                </div>
+            </header>
+            <section class="about">
+                <div class="container">
+                    <h1 class="section-title">
+                        O nas
+                    </h1>
+                    <div class="about-art">
+                        <p>
+                            Aliquam erat ac ipsum. Integer aliquam purus. Quisque lorem tortor fringilla sed, vestibulum id, eleifend justo vel bibendum sapien massa ac turpis faucibus orci luctus non.Aliquam erat ac ipsum. Integer aliquam purus. Quisque lorem tortorfring sed, vestibulum id.This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit.
+                        </p>
+                    </div>
+
+                    <div class="row">
+                        <div class="people">
+                            <!--single-->
+                            <div class="person">
+                                <div class="person-img-outter">
+                                    <div class="person-img" style="background-image: url(images/osoba_01.png);"></div>
+                                    <div class="person-img-mask rotate"></div>
+                                </div>
+                                <div class="person-text">
+                                    <div class="person-text-1">
+                                        Karolina
+                                    </div>
+                                    <div class="person-text-2">
+                                        Pielęgnacja twarzy
+                                    </div>
+                                </div>
+                            </div>
+                            <!--single-->
+                            <div class="person">
+                                <div class="person-img-outter">
+                                    <div class="person-img" style="background-image: url(images/osoba_02.png);"></div>
+                                    <div class="person-img-mask rotate"></div>
+                                </div>
+                                <div class="person-text">
+                                    <div class="person-text-1">
+                                        Katarzyna
+                                    </div>
+                                    <div class="person-text-2">
+                                        Pielęgnacja twarzy
+                                    </div>
+                                </div>
+                            </div>                        
+                        </div>
+                    </div>
+                    <div class="about-art">
+                        <p>
+                            Aliquam erat ac ipsum. Integer aliquam purus. Quisque lorem tortor fringilla sed, vestibulum id, eleifend justo vel bibendum sapien massa ac turpis faucibus orci luctus non.Aliquam erat ac ipsum. Integer aliquam purus. Quisque lorem tortorfring sed, vestibulum id.This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit.
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <footer class="footer1">
+                <div class="container">
+                    <div class="row">
+                        <div class="footer-1 col-xs-12 logo-div">
+                            <a href="/" title="LaGrace"><img alt="Logo" src="images/logo2.png" class="logo img-responsive"></a>
+                        </div>
+                        <div class="footer-2 col-xs-12 logo-div">
+                            <div class="row">
+                                <div class="hidden-xs col-sm-12">
+                                    <ul id="menu-bottom">
+                                        <li class="active"><a href="#" title="">Strona główna</a></li>
+                                        <li><a href="#" title="">O nas</a></li>
+                                        <li class="has-child"><a href="#" title="">Zabiegi</a>
+                                            <ul class="menu-bottom-2 ">
+                                                <li><a href="#" title="">Zabieg 1</a></li>
+                                                <li><a href="#" title="">Zabieg 2</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#" title="">Lookbook</a></li>
+                                        <li><a href="#" title="">Kontakt</a></li>
+                                    </ul>   
+                                </div>                                  
+                            </div>
+                        </div>
+                        <div class="footer-3 col-xs-12">
+                            <div class="footer-info">
+                                <div class="footer-info-l">
+                                    Projekt i realizacja: <a target="_blank" href="http://laboratoriumartystyczne.pl/" title="">Laboratorium Artstyczne</a><br>
+                                    Oprogramowanie: <a target="_blank" href="http://blackwolfcms.pl/" title="">Black Wolf CMS</a>
+                                </div>
+                                <div class="footer-info-r">
+                                    <img class="" src="images/LA.png" alt="Laboratorium Artstyczne">
+                                    <img class="" src="images/BW.png" alt="Black Wolf CMS">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </main>
+    </body>
+</html>

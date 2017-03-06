@@ -1,0 +1,253 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>LaGrace</title>
+
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link href='https://fonts.googleapis.com/css?family=Lato:300italic,700,400,300&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        
+        <!-- css -->
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link href="fonts/stylesheet.css" rel="stylesheet">
+        <!-- js -->
+        <script src="js/jquery.js"></script>
+        <script src=js/main.js></script>
+        <script src=js/jquery.smoothscroll.js></script>
+        <!--Skrollr-->
+		<script type="text/javascript" src="js/skrollr.js"></script>
+        <!--Bootstrap-->
+        <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+        <script src="bootstrap/js/bootstrap.min.js"></script>   
+        <!--BXSlider-->
+        <link href="bxslider/jquery.bxslider.css" rel="stylesheet" />
+        <script src="bxslider/jquery.bxslider.js"></script>
+        <!--colorbox-->
+		<link rel="stylesheet" type="text/css" href="colorbox/colorbox.css">
+		<script src="colorbox/jquery.colorbox.js"></script>
+        
+        <!--------------------->
+		<script type="text/javascript">
+            jQuery(window).load(function(){ 
+                skrollr.init({ forceHeight: false }); 
+            });
+        </script>
+
+    </head>
+    <body>
+        <main>
+            <header id="top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-10 col-sm-3 logo-div2">
+                            <a href="/" title="LaGrace"><img alt="Logo" src="images/logo.png" class="logo img-responsive"></a>
+                        </div> 
+                        <div class="col-sm-9 hidden-xs">
+                            <ul id="menu-top">
+                                <li class="active"><a href="#" title="">Strona główna</a></li>
+                                <li><a href="#" title="">O nas</a></li>
+                                <li><a href="#" title="">Zabiegi</a>
+                                    <ul class="menu-top-2 transition_0_5">
+                                        <li><a href="#" title="">Zabieg 1</a></li>
+                                        <li><a href="#" title="">Zabieg 2</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#" title="">Lookbook</a></li>
+                                <li><a href="#" title="">Kontakt</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
+                            <ul id="menu-top-mobile">
+                                <li><a href="#" title="">Strona główna</a></li>
+                                <li><a href="#" title="">O nas</a></li>
+                                <li class="has-child"><a href="#" title="">Zabiegi<img class="next-level-mobile" src="images/down-arrow.png" alt="V"></a>
+                                    <ul class="menu-top-2 ">
+                                        <li><a href="#" title="">Zabieg 1</a></li>
+                                        <li><a href="#" title="">Zabieg 2</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#" title="">Lookbook</a></li>
+                                <li><a href="#" title="">Kontakt</a></li>
+                            </ul>
+                            
+                        </div>
+                        <img class="menu-top-mobile-ico hidden-sm hidden-md hidden-lg" src="images/menu.png">
+                    </div>
+                </div>
+            </header>
+            <section class="map">
+                <div class="container">
+                    <h1 class="section-title">
+                        kontakt
+                    </h1>
+                </div>
+                <!--Google Map-->
+                <script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initAutocomplete" async defer></script>
+                
+                <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+                <div id="map"></div>
+                <script>
+                    function initAutocomplete() {
+                        var myLatLng = {lat: 52.2284827, lng: 21.0134945};
+                        var map = new google.maps.Map(document.getElementById('map'), {
+                            center: myLatLng,
+                            zoom: 15,
+                            mapTypeId: google.maps.MapTypeId.ROADMAP
+                        });
+
+                        // Create the search box and link it to the UI element.
+                        var input = document.getElementById('pac-input');
+                        var searchBox = new google.maps.places.SearchBox(input);
+                        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+                        // Bias the SearchBox results towards current map's viewport.
+                        map.addListener('bounds_changed', function() {
+                            searchBox.setBounds(map.getBounds());
+                        });
+
+                        var markers = [];
+                        
+                        var marker = new google.maps.Marker({
+                          position: myLatLng,
+                          map: map,
+                          icon: 'images/marker.png',
+                        });
+                        
+                        // Listen for the event fired when the user selects a prediction and retrieve
+                        // more details for that place.
+                        searchBox.addListener('places_changed', function() {
+                            var places = searchBox.getPlaces();
+
+                            if (places.length == 0) {
+                                return;
+                            }
+
+                            // Clear out the old markers.
+                            markers.forEach(function(marker) {
+                                marker.setMap(null);
+                            });
+                            markers = [];
+
+                            // For each place, get the icon, name and location.
+                            var bounds = new google.maps.LatLngBounds();
+                            places.forEach(function(place) {
+                                if (!place.geometry) {
+                                    console.log("Returned place contains no geometry");
+                                    return;
+                                }
+                                var icon = {
+                                    url: place.icon,
+                                    size: new google.maps.Size(71, 71),
+                                    origin: new google.maps.Point(0, 0),
+                                    anchor: new google.maps.Point(17, 34),
+                                    scaledSize: new google.maps.Size(25, 25)
+                                };
+                            
+                                // Create a marker for each place.
+                                markers.push(new google.maps.Marker({
+                                    map: map,
+                                    icon: 'images/marker.png',
+                                    title: place.name,
+                                    position: place.geometry.location
+                                }));
+                                if (place.geometry.viewport) {
+                                // Only geocodes have viewport.
+                                bounds.union(place.geometry.viewport);
+                                } else {
+                                    bounds.extend(place.geometry.location);
+                                }
+                            });
+                            map.fitBounds(bounds);
+                        });
+                    }
+                </script>
+            </section>
+            <section class="contact">
+                <script src='https://www.google.com/recaptcha/api.js'></script>
+                <div class="container">
+                    <div class="row">
+                        <div class="contact-article col-xs-12 col-xs-offset-0 col-sm-6 col-sm-offset-3">
+                            <p>
+                                ul. Kopernika 23 lok.1, 05-091, Ząbki<br>
+                                e-mail: studio@lagrace.com.pl<br>
+                                tel. 537 600 533<br>
+                            </p>
+                            <p>
+                                Karolina Jaworska<br>
+                                e-mail: karola@lagrace.com.pl
+                            </p>
+                            <p>
+                                Katarzyna Kostrowska<br>
+                                e-mail: kasia@lagrace.com.pl
+
+                            </p>                        
+                        </div>
+                    </div>
+                    <div class="row form">
+                        <div class="col-xs-12 col-xs-offset-0 col-sm-6 col-sm-offset-3">
+                            <form id="contact-form">
+                                <input class="text_field error" placeholder="Imię i nazwisko" name="name" value="">
+                                <input class="text_field" placeholder="Adres E-mail" name="mail" value="">
+                                <input class="text_field" placeholder="Telefon kontaktowy" name="phone" value="">
+                                <textarea class="text_field" placeholder="Treść wiadomości" name="text" value=""></textarea>
+                                <div class="captcha">
+                                    <div class="g-recaptcha captcha-error" data-sitekey="6LebVBETAAAAAB5u4Dogsmyqwj6eBsVcR6WJaZk_"></div>
+                                </div>
+                                <div class="submit-info">
+                                    <p>
+                                        Twoja wiadomość została wysłana
+                                    </p>
+                                </div>
+                                <div class="button-div">
+                                    <a class="pink-button" href="#">wyślij</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <footer class="footer1">
+                <div class="container">
+                    <div class="row">
+                        <div class="footer-1 col-xs-12 logo-div">
+                            <a href="/" title="LaGrace"><img alt="Logo" src="images/logo2.png" class="logo img-responsive"></a>
+                        </div>
+                        <div class="footer-2 col-xs-12 logo-div">
+                            <div class="row">
+                                <div class="hidden-xs col-sm-12">
+                                    <ul id="menu-bottom">
+                                        <li class="active"><a href="#" title="">Strona główna</a></li>
+                                        <li><a href="#" title="">O nas</a></li>
+                                        <li class="has-child"><a href="#" title="">Zabiegi</a>
+                                            <ul class="menu-bottom-2 ">
+                                                <li><a href="#" title="">Zabieg 1</a></li>
+                                                <li><a href="#" title="">Zabieg 2</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#" title="">Lookbook</a></li>
+                                        <li><a href="#" title="">Kontakt</a></li>
+                                    </ul>   
+                                </div>                                  
+                            </div>
+                        </div>
+                        <div class="footer-3 col-xs-12">
+                            <div class="footer-info">
+                                <div class="footer-info-l">
+                                    Projekt i realizacja: <a target="_blank" href="http://laboratoriumartystyczne.pl/" title="">Laboratorium Artstyczne</a><br>
+                                    Oprogramowanie: <a target="_blank" href="http://blackwolfcms.pl/" title="">Black Wolf CMS</a>
+                                </div>
+                                <div class="footer-info-r">
+                                    <img class="" src="images/LA.png" alt="Laboratorium Artstyczne">
+                                    <img class="" src="images/BW.png" alt="Black Wolf CMS">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </main>
+    </body>
+</html>
